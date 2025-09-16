@@ -2,95 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Virtual Rocketry Lab Design System - Space-themed aerospace engineering interface */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Deep Space Color Palette */
+    --background: 220 30% 8%;        /* Deep space blue #0B1426 */
+    --foreground: 220 20% 95%;       /* Light text for contrast */
+    
+    /* Surface colors for panels and cards */
+    --surface: 220 25% 12%;          /* Darker panels #1E293B */
+    --surface-elevated: 220 20% 16%; /* Elevated surfaces */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 25% 12%;
+    --card-foreground: 220 20% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 20% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Mission Critical Blue - Primary actions */
+    --primary: 217 91% 60%;          /* Space blue #3B82F6 */
+    --primary-foreground: 220 30% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary surfaces */
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 220 20% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted elements */
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Success/Go signals */
+    --accent: 142 76% 36%;           /* Mission green #10B981 */
+    --accent-foreground: 220 30% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Alert/Warning - Thrust orange */
+    --thrust: 38 92% 50%;            /* Technical orange #F59E0B */
+    --thrust-foreground: 220 30% 8%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Destructive - Critical alerts */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 20% 95%;
 
-    --radius: 0.5rem;
+    /* Borders and inputs */
+    --border: 220 20% 20%;
+    --input: 220 20% 16%;
+    --ring: 217 91% 60%;
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.75rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(220 30% 8%) 0%, hsl(235 40% 12%) 50%, hsl(220 30% 8%) 100%);
+    --gradient-thrust: linear-gradient(90deg, hsl(38 92% 50%) 0%, hsl(45 85% 55%) 100%);
+    --gradient-mission: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(224 76% 48%) 100%);
+    
+    /* Shadows */
+    --shadow-cosmic: 0 10px 40px -10px hsl(217 91% 60% / 0.3);
+    --shadow-panel: 0 4px 20px -2px hsl(220 30% 4% / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Same as root since we're designing for dark space theme */
+    --background: 220 30% 8%;
+    --foreground: 220 20% 95%;
+    --card: 220 25% 12%;
+    --card-foreground: 220 20% 95%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 20% 95%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 30% 8%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 220 20% 85%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 220 30% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 20% 95%;
+    --border: 220 20% 20%;
+    --input: 220 20% 16%;
+    --ring: 217 91% 60%;
   }
 }
 
@@ -100,6 +95,68 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: var(--gradient-cosmic);
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar for space theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--surface));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+}
+
+@layer components {
+  /* Cosmic glow effect for important elements */
+  .cosmic-glow {
+    box-shadow: var(--shadow-cosmic);
+  }
+
+  .panel-shadow {
+    box-shadow: var(--shadow-panel);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Grid patterns for technical feel */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Rocket component styling */
+  .rocket-component {
+    @apply border border-border/50 rounded-lg bg-surface/50 hover:bg-surface-elevated/70 transition-smooth cursor-grab;
+  }
+
+  .rocket-component:hover {
+    @apply border-primary/50 cosmic-glow;
+  }
+
+  .rocket-component.selected {
+    @apply border-primary bg-primary/10;
   }
 }
