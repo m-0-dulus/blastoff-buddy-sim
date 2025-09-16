@@ -58,6 +58,11 @@ const componentCategories: ComponentCategory[] = [
       { name: "A8-3", type: "motor", icon: <Zap className="h-3 w-3" /> },
       { name: "B6-4", type: "motor", icon: <Zap className="h-3 w-3" /> },
       { name: "C6-5", type: "motor", icon: <Zap className="h-3 w-3" /> },
+      { name: "D12-5", type: "motor", icon: <Zap className="h-3 w-3" /> },
+      { name: "E9-6", type: "motor", icon: <Zap className="h-3 w-3" /> },
+      { name: "F15-8", type: "motor", icon: <Zap className="h-3 w-3" /> },
+      { name: "G80-10", type: "motor", icon: <Zap className="h-3 w-3" /> },
+      { name: "H128-14", type: "motor", icon: <Zap className="h-3 w-3" /> },
     ]
   },
   {

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, BarChart3, Settings, RefreshCw } from "lucide-react";
+import { Play, BarChart3, Settings, RefreshCw, Eye, Box } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { RocketViewer2D } from "@/components/2D/RocketViewer2D";
+import { AnalysisPanel } from "@/components/Analysis/AnalysisPanel";
+import { SimulationPanel } from "@/components/Simulation/SimulationPanel";
 
 interface RocketComponent {
   id: string;
@@ -15,6 +18,9 @@ interface RocketComponent {
 export const DesignWorkspace = () => {
   const [components, setComponents] = useState<RocketComponent[]>([]);
   const [selectedComponent, setSelectedComponent] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<"2d" | "3d">("3d");
+  const [showAnalysis, setShowAnalysis] = useState(false);
+  const [showSimulation, setShowSimulation] = useState(false);
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
@@ -64,6 +70,26 @@ export const DesignWorkspace = () => {
         </div>
         
         <div className="flex items-center gap-2">
+          <div className="flex border rounded-lg">
+            <Button 
+              variant={viewMode === "3d" ? "default" : "ghost"} 
+              size="sm"
+              onClick={() => setViewMode("3d")}
+              className="rounded-r-none"
+            >
+              <Box className="h-4 w-4 mr-1" />
+              3D
+            </Button>
+            <Button 
+              variant={viewMode === "2d" ? "default" : "ghost"} 
+              size="sm"
+              onClick={() => setViewMode("2d")}
+              className="rounded-l-none"
+            >
+              <Eye className="h-4 w-4 mr-1" />
+              2D
+            </Button>
+          </div>
           <Button variant="outline" size="sm" onClick={() => setComponents([])}>
             <RefreshCw className="h-4 w-4 mr-2" />
             Clear
@@ -72,22 +98,23 @@ export const DesignWorkspace = () => {
             <Settings className="h-4 w-4 mr-2" />
             Properties
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" onClick={() => setShowAnalysis(true)}>
             <BarChart3 className="h-4 w-4 mr-2" />
             Analysis
           </Button>
-          <Button onClick={simulateRocket} className="cosmic-glow">
+          <Button onClick={() => setShowSimulation(true)} className="cosmic-glow">
             <Play className="h-4 w-4 mr-2" />
             Simulate
           </Button>
         </div>
       </div>
 
-      <div
-        className="flex-1 relative grid-pattern"
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-      >
+      {viewMode === "3d" ? (
+        <div
+          className="flex-1 relative grid-pattern"
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+        >
         {/* Center line for rocket alignment */}
         <div className="absolute left-1/2 top-0 bottom-0 w-px bg-primary/30 transform -translate-x-1/2" />
         
@@ -119,7 +146,6 @@ export const DesignWorkspace = () => {
         {components.length === 0 && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-muted-foreground">
-              <div className="text-4xl mb-4">🚀</div>
               <h3 className="text-lg font-semibold mb-2">Start Building Your Rocket</h3>
               <p className="text-sm">
                 Drag components from the sidebar to design your rocket
@@ -150,7 +176,26 @@ export const DesignWorkspace = () => {
             </Card>
           </div>
         )}
-      </div>
+        </div>
+      ) : (
+        <div className="flex-1">
+          <RocketViewer2D components={components} />
+        </div>
+      )}
+
+      {/* Analysis Panel */}
+      <AnalysisPanel 
+        components={components}
+        isOpen={showAnalysis}
+        onClose={() => setShowAnalysis(false)}
+      />
+
+      {/* Simulation Panel */}
+      <SimulationPanel 
+        components={components}
+        isOpen={showSimulation}
+        onClose={() => setShowSimulation(false)}
+      />
     </Card>
   );
 };

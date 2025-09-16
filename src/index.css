@@ -149,7 +149,7 @@
 
   /* Rocket component styling */
   .rocket-component {
-    @apply border border-border/50 rounded-lg bg-surface/50 hover:bg-surface-elevated/70 transition-smooth cursor-grab;
+    @apply border border-border/50 rounded-lg bg-surface/50 hover:bg-surface-elevated/70 transition-smooth cursor-grab hover:scale-105 hover:shadow-lg;
   }
 
   .rocket-component:hover {

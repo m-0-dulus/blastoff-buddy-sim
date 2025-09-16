@@ -2,6 +2,7 @@ import { Header } from "@/components/Layout/Header";
 import { Sidebar } from "@/components/Layout/Sidebar";
 import { DesignWorkspace } from "@/components/Design/DesignWorkspace";
 import { RocketViewer } from "@/components/3D/RocketViewer";
+import { RocketViewer2D } from "@/components/2D/RocketViewer2D";
 import { AIAssistant } from "@/components/AI/AIAssistant";
 import spaceBackground from "@/assets/space-background.jpg";
 

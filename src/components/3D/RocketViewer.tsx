@@ -48,8 +48,8 @@ export const RocketViewer = () => {
       </Canvas>
       
       {/* 3D Viewer overlay info */}
-      <div className="absolute top-4 left-4 bg-card/80 backdrop-blur-sm rounded-lg p-3 border border-border/50">
-        <h3 className="font-semibold text-sm mb-2">3D Viewer</h3>
+      <div className="absolute bottom-4 left-4 bg-card/80 backdrop-blur-sm rounded-lg p-3 border border-border/50">
+        <h3 className="font-semibold text-sm mb-2">3D Controls</h3>
         <div className="text-xs text-muted-foreground space-y-1">
           <p>• Drag to rotate</p>
           <p>• Scroll to zoom</p>
