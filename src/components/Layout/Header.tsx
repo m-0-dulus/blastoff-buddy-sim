@@ -10,9 +10,9 @@ export const Header = () => {
             <Rocket className="h-8 w-8 text-primary" />
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                RocketLab AI
+                VyomLab AI
               </h1>
-              <p className="text-xs text-muted-foreground">Virtual Rocketry Laboratory</p>
+              <p className="text-xs text-muted-foreground">Your Desi AI Model Rocket Design Lab</p>
             </div>
           </div>
         </div>
